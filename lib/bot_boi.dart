@@ -24,7 +24,9 @@ void startBot() {
     ..registerCommand('covid', covidCommand)
     ..registerCommand('coronavirus', covidCommand)
     ..registerCommand('covid19', covidCommand)
-    ..registerCommand('balance', checkBal)
-    ..registerCommand('bal', checkBal)
-    ..registerCommand('bank', checkBal);
+    ..registerCommand('balance', balanceCommand)
+    ..registerCommand('bal', balanceCommand)
+    ..registerCommand('bank', balanceCommand)
+    ..registerCommand('work', workCommand)
+    ..registerCommand('job', workCommand);
 }

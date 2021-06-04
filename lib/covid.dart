@@ -6,19 +6,21 @@ import 'package:nyxx_commander/commander.dart';
 import 'package:bot_boi/resources/colors.dart';
 
 // ---Embeds---
-EmbedBuilder covidTotalEmbed = EmbedBuilder()
-  ..color = randColor()
-  ..addField(builder: (field) {
-    field.name = 'Global Coronavirus Statistics';
-    field.content =
-        'Here are the current coronavirus statistics from the [World Health Organization (WHO)](https://www.who.int/)';
-  })
-  ..addField(builder: (field) {
-    totals().then((stats) {
-      field.name = '${stats[0]} Cases and ${stats[1]} Deaths';
+EmbedBuilder covidTotalEmbed(String fieldName) {
+  final embed = EmbedBuilder()
+    ..color = randColor()
+    ..addField(builder: (field) {
+      field.name = 'Global Coronavirus Statistics';
+      field.content =
+          'Here are the current coronavirus statistics from the [World Health Organization (WHO)](https://www.who.int/)';
+    })
+    ..addField(builder: (field) {
+      field.name = fieldName;
+      field.content =
+          'Check `./help` to see how else you can use this command!';
     });
-    field.content = 'Check `./help` to see how else you can use this command!';
-  });
+  return embed;
+}
 
 EmbedBuilder covidListEmbed = EmbedBuilder()
   ..color = randColor()
@@ -59,7 +61,10 @@ Function(CommandContext, String) covidCommand =
   print(args);
   if (args.isEmpty) {
     await ctx.sendMessage(content: 'Retrieving Data... Please Wait');
-    await ctx.sendMessage(embed: covidTotalEmbed);
+    await totals().then((stats) async {
+      await ctx.sendMessage(
+          embed: covidTotalEmbed('${stats[0]} Cases and ${stats[1]} Deaths'));
+    });
   } else if (args.length == 1 && args[0] == 'list') {
     await ctx.sendMessage(embed: covidListEmbed);
     await ctx.sendMessage(content: 'Retrieving Data... Please Wait');
@@ -89,7 +94,8 @@ Function(CommandContext, String) covidCommand =
     await getCountries().then((stats) async {
       if (stats[args[0].toLowerCase()] != null) {
         await ctx.sendMessage(
-            embed: covidCountryEmbed(ctx.channel.id.toString()));
+            embed: covidCountryEmbed(
+                '${stats[args[0].toLowerCase()][0]} Cases and ${stats[args[0].toLowerCase()][1]} Deaths'));
       } else {
         await ctx.sendMessage(embed: covidErrorEmbed);
       }
