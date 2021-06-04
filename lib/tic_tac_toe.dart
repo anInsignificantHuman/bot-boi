@@ -128,10 +128,11 @@ List minimax(List board, bool maximizing,
   if (gameOver(board)) {
     return [evaluatePosition(board), ''];
   }
+  var moves = movesAvailable(board);
   dynamic bestMove = '';
   num bestValue = (maximizing) ? -double.infinity : double.infinity;
   var symbol = (maximizing) ? 'X' : 'O';
-  for (int move in movesAvailable(board)) {
+  for (int move in moves) {
     List newBoard = jsonDecode(jsonEncode(board));
     placeMarker(newBoard, move, symbol);
     num hypotheticalValue = minimax(newBoard, !maximizing, alpha, beta)[0];

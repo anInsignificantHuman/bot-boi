@@ -7,11 +7,16 @@ environment:
   sdk: '>=2.12.3 <3.0.0'
 
 dependencies:
-  nyxx: ^2.0.0-rc.3 
-  nyxx_commander: ^2.0.0-rc.3
-  nyxx_interactions: ^2.0.0-rc.4
+  # Utility
+  intl: ^0.17.0
+  # Requests
   http: ^0.13.3
   html: ^0.15.0
+  # Database
+  mongo_dart: ^0.7.0+2
+  # Bot
+  nyxx: ^2.0.0-rc.3 
+  nyxx_commander: ^2.0.0-rc.3
 
 dev_dependencies:
   pedantic: ^1.11.0
