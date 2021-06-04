@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'package:bot_boi/bank.dart';
+import 'package:bot_boi/src/bank.dart';
 import 'package:nyxx/nyxx.dart';
 import 'package:nyxx_commander/commander.dart';
-import 'package:bot_boi/help.dart';
-import 'package:bot_boi/covid.dart';
+import 'package:bot_boi/src/help.dart';
+import 'package:bot_boi/src/covid.dart';
 
 // Getting Token From TXT
 String getToken() {

@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:nyxx/nyxx.dart';
 import 'package:nyxx_commander/commander.dart';
-import 'package:bot_boi/resources/colors.dart';
+import 'package:bot_boi/src/colors.dart';
 
 // ---Embeds---
 EmbedBuilder balanceEmbed(String wallet, String bank, String netWorth) {

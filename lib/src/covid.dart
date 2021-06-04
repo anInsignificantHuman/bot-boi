@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as html;
 import 'package:nyxx/nyxx.dart';
 import 'package:nyxx_commander/commander.dart';
-import 'package:bot_boi/resources/colors.dart';
+import 'package:bot_boi/src/colors.dart';
 
 // ---Embeds---
 EmbedBuilder covidTotalEmbed(String fieldName) {
